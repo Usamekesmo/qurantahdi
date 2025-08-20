@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحدي القرآن الكريم - الإصدار الفاخر</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+</head>
+<body>
+
+    <div class="container">
+        <!-- 1. شاشة الإعدادات -->
+        <div id="settings-screen">
+            <h1>تحدي القرآن الكريم</h1>
+            <p class="subtitle">اختبر حفظك وميزانك في آيات الله</p>
+            <div class="form-group">
+                <label for="user-name">الاسم الكريم:</label>
+                <input type="text" id="user-name" placeholder="أدخل اسمك" required>
+            </div>
+            <div class="form-group">
+                <label for="reciter-select">اختر القارئ:</label>
+                <select id="reciter-select">
+                    <option value="ar.alafasy">مشاري العفاسي</option>
+                    <option value="ar.abdulbasitmurattal">عبد الباسط عبد الصمد (مرتل )</option>
+                    <option value="ar.sudais">عبد الرحمن السديس</option>
+                    <option value="ar.minshawi">محمد صديق المنشاوي</option>
+                    <option value="ar.husary">محمود خليل الحصري</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="surah-select">اختر السورة (لتحديد النطاق تلقائياً):</label>
+                <select id="surah-select">
+                    <option value="0">-- كل القرآن --</option>
+                </select>
+            </div>
+            <div class="form-group page-range-inputs">
+                <div>
+                    <label for="start-page">من صفحة:</label>
+                    <input type="number" id="start-page" min="1" max="604" value="1">
+                </div>
+                <div>
+                    <label for="end-page">إلى صفحة:</label>
+                    <input type="number" id="end-page" min="1" max="604" value="604">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="num-questions">عدد الأسئلة (1-25):</label>
+                <input type="number" id="num-questions" min="1" max="25" value="5">
+            </div>
+            <button id="start-test-btn">ابدأ التحدي</button>
+            <p id="error-message" class="hidden"></p>
+        </div>
+
+        <!-- 2. شاشة التحميل -->
+        <div id="loading-screen" class="hidden">
+            <h2>جاري تحضير التحدي...</h2>
+            <div class="loader"></div>
+            <p>﴿ وَفِي ذَٰلِكَ فَلْيَتَنَافَسِ الْمُتَنَافِسُونَ ﴾</p>
+        </div>
+
+        <!-- 3. شاشة الاختبار -->
+        <div id="quiz-screen" class="hidden">
+            <div class="quiz-header">
+                <span id="user-name-display"></span>
+                <span id="question-counter"></span>
+            </div>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <h2 id="question-title"></h2>
+            <div id="question-area"></div>
+            <div id="options-container" class="options-container"></div>
+            <div id="action-buttons-container" class="action-buttons-container"></div>
+        </div>
+        
+        <!-- 4. شاشة النتائج -->
+        <div id="results-screen" class="hidden">
+            <h1>انتهى التحدي!</h1>
+            <h2 id="final-user-name"></h2>
+            <p style="font-size: 1.8em;">نتيجتك النهائية:</p>
+            <p id="final-score"></p>
+            <p id="high-score-display"></p>
+            
+            <div id="mistakes-review" class="mistakes-review-container hidden">
+                <h3>مراجعة الأخطاء</h3>
+                <div id="mistakes-list"></div>
+            </div>
+
+            <button id="restart-btn">خوض تحدٍ جديد</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
