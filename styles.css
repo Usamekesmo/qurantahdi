@@ -1,0 +1,150 @@
+/* --- استيراد الخطوط --- */
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Cairo:wght@400;600;700&display=swap' );
+
+/* --- المتغيرات اللونية والأساسية --- */
+:root {
+    --primary-color: #2c6b54; /* أخضر غامق رئيسي */
+    --secondary-color: #bca678; /* ذهبي هادئ */
+    --success-color: #4caf50; /* أخضر فاتح للنجاح */
+    --danger-color: #e57373; /* أحمر فاتح للفشل */
+    --light-bg: #f5f5f5;
+    --dark-text: #212121;
+    --font-quran: 'Amiri Quran', serif;
+    --font-main: 'Cairo', sans-serif;
+}
+
+/* --- تصميم الجسم والخلفية --- */
+body {
+    font-family: var(--font-main);
+    background-color: #e8f5e9; /* خلفية بلون أخضر فاتح جداً */
+    background-image: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png' );
+    color: var(--dark-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- تصميم الحاوية الرئيسية --- */
+.container {
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(5px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    width: 90%;
+    max-width: 850px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s ease-in-out;
+}
+
+h1, h2 {
+    font-family: var(--font-main);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+h1 { font-size: 2.8em; }
+h2 { font-size: 2em; }
+
+/* --- شاشة الإعدادات --- */
+.settings-screen .form-group { margin-bottom: 20px; text-align: right; }
+.settings-screen label { font-weight: 600; font-size: 1.1em; display: block; margin-bottom: 8px; }
+.settings-screen input, .settings-screen select {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+}
+.settings-screen .page-range-inputs { display: flex; gap: 15px; }
+.settings-screen #start-test-btn {
+    background: linear-gradient(45deg, var(--primary-color), #4a9d80);
+    color: white;
+    font-size: 1.4em;
+    font-weight: 600;
+    padding: 18px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 4px 20px rgba(44, 107, 84, 0.35);
+}
+
+/* --- شاشة الاختبار --- */
+.quiz-screen .quiz-header { font-size: 1.2em; margin-bottom: 15px; }
+.quiz-screen #question-title { font-size: 1.6em; min-height: 60px; }
+
+.quiz-screen .options-container { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px; }
+.quiz-screen .option-btn {
+    background-color: #ffffff;
+    border: 3px solid transparent;
+    padding: 25px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: var(--font-quran);
+    font-size: 2.2em;
+    line-height: 2.2;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+.quiz-screen .option-btn.selected {
+    border-color: var(--secondary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.quiz-screen .option-btn.correct {
+    border-color: var(--success-color) !important;
+    background-color: #f0fff0 !important;
+}
+.quiz-screen .option-btn.incorrect {
+    border-color: var(--danger-color) !important;
+    background-color: #fff0f0 !important;
+    opacity: 0.7;
+}
+
+.ordering-container .order-btn {
+    font-size: 2.2em;
+    width: 80px;
+    height: 80px;
+    font-family: var(--font-main);
+}
+#user-sequence { font-size: 2em; }
+
+.action-buttons-container button {
+    background-color: var(--secondary-color);
+    color: #fff;
+    font-family: var(--font-main);
+    font-size: 1.3em;
+    font-weight: 600;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background-color 0.3s;
+}
+.action-buttons-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.action-buttons-container button:hover:not(:disabled) {
+    background-color: #a8905a;
+}
+
+/* --- عناصر عامة --- */
+.hidden { display: none !important; }
+.loader { border: 8px solid #f3f3f3; border-top: 8px solid var(--secondary-color); border-radius: 50%; width: 80px; height: 80px; animation: spin 1.2s linear infinite; margin: 40px auto; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+#error-message { color: var(--danger-color); margin-top: 15px; font-weight: 600; }
+
+/* --- شاشة النتائج --- */
+#high-score-display { font-size: 1.2em; color: var(--secondary-color); margin-top: 10px; }
+#results-screen button { background-color: var(--primary-color); color: white; font-size: 1.2em; padding: 15px 30px; border: none; border-radius: 10px; cursor: pointer; margin-top: 20px; }
